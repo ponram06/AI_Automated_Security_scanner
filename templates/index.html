@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Cybersecurity Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>AI Cybersecurity Scanner</h1>
+                </div>
+                <p class="tagline">Advanced vulnerability detection powered by artificial intelligence</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Scan Configuration -->
+            <section class="scan-config">
+                <div class="config-card">
+                    <h2><i class="fas fa-cog"></i> Scan Configuration</h2>
+                    
+                    <div class="input-group">
+                        <label for="target-url">
+                            <i class="fas fa-globe"></i> Target URL
+                        </label>
+                        <input type="url" 
+                               id="target-url" 
+                               placeholder="https://example.com" 
+                               required>
+                    </div>
+
+                    <div class="options-grid">
+                        <div class="option-card">
+                            <h3><i class="fas fa-spider"></i> Crawling Options</h3>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="crawl-enabled" checked>
+                                <span class="checkmark"></span>
+                                Enable site crawling
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="deep-crawl">
+                                <span class="checkmark"></span>
+                                Deep crawling (slower)
+                            </label>
+                        </div>
+
+                        <div class="option-card">
+                            <h3><i class="fas fa-bug"></i> Vulnerability Types</h3>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="scan-xss" checked>
+                                <span class="checkmark"></span>
+                                XSS (Cross-Site Scripting)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="scan-sqli" checked>
+                                <span class="checkmark"></span>
+                                SQL Injection
+                            </label>
+                        </div>
+
+                        <div class="option-card">
+                            <h3><i class="fas fa-cogs"></i> Advanced Options</h3>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ai-analysis">
+                                <span class="checkmark"></span>
+                                Enhanced AI Analysis
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generate-report">
+                                <span class="checkmark"></span>
+                                Generate PDF Report
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="scan-controls">
+                        <button type="button" id="start-scan" class="btn-primary">
+                            <i class="fas fa-play"></i>
+                            Start Security Scan
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Section -->
+            <section id="scan-status" class="scan-status hidden">
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <div class="spinner"></div>
+                    </div>
+                    <h3 id="status-message">Initializing scan...</h3>
+                    <div class="progress-details">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="scan-details">
+                            <span id="current-step">Preparing...</span>
+                            <span id="urls-scanned">0 URLs scanned</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="results-section hidden">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-line"></i> Scan Results</h2>
+                    <div class="results-summary">
+                        <div class="metric-card">
+                            <span class="metric-value" id="total-urls">0</span>
+                            <span class="metric-label">URLs Scanned</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value" id="vulnerabilities-found">0</span>
+                            <span class="metric-label">Vulnerabilities</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value" id="risk-level">Low</span>
+                            <span class="metric-label">Risk Level</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="results-content" class="results-content">
+                    <!-- Results will be populated here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
